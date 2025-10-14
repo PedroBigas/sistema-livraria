@@ -27,7 +27,7 @@ public class Biblioteca {
         autores.add(autor6);
 
         // ===== LIVROS =====
-        livros.add(new Livro(1, "1984", autor1, LocalDate.of(2025, 10, 12))); // ontem
+        livros.add(new Livro(1, "1984", autor1, LocalDate.of(2025, 10, 12)));
         livros.add(new Livro(2, "A Revolução dos Bichos", autor1, LocalDate.of(2025, 10, 11)));
 
         livros.add(new Livro(3, "Harry Potter e a Pedra Filosofal", autor2, LocalDate.of(2025, 10, 10)));

@@ -1,9 +1,12 @@
 package entities;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.Objects;
 
 public class Autor {
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private Integer id;
     private String nome;
     private LocalDate dataNascimento;
@@ -40,5 +43,12 @@ public class Autor {
     @Override
     public int hashCode() {
         return Objects.hashCode(id);
+    }
+
+    @Override
+    public String toString() {
+        return "id: " + getId() +
+                "Nome: " + getNome() +
+                "Data de nascimento: " + FORMATTER.format(getDataNascimento());
     }
 }
