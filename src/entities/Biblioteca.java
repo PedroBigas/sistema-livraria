@@ -30,11 +30,11 @@ public class Biblioteca {
         livros.add(new Livro(1, "1984", autor1, LocalDate.of(2025, 10, 12)));
         livros.add(new Livro(2, "A Revolução dos Bichos", autor1, LocalDate.of(2025, 10, 11)));
 
-        livros.add(new Livro(3, "Harry Potter e a Pedra Filosofal", autor2, LocalDate.of(2025, 10, 10)));
+        livros.add(new Livro(3, "Harry Potter e a Pedra Filosofal", autor2, false, LocalDate.of(2025, 10, 10)));
         livros.add(new Livro(4, "Harry Potter e o Prisioneiro de Azkaban", autor2, LocalDate.of(2025, 10, 9)));
 
         livros.add(new Livro(5, "O Senhor dos Anéis: A Sociedade do Anel", autor3, LocalDate.of(2025, 10, 8)));
-        livros.add(new Livro(6, "O Hobbit", autor3, LocalDate.of(2025, 10, 7)));
+        livros.add(new Livro(6, "O Hobbit", autor3, false, LocalDate.of(2025, 10, 7)));
 
         livros.add(new Livro(7, "Dom Casmurro", autor4, LocalDate.of(2025, 10, 6)));
         livros.add(new Livro(8, "Memórias Póstumas de Brás Cubas", autor4, LocalDate.of(2025, 10, 5)));
