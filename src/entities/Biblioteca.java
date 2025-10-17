@@ -75,5 +75,4 @@ public class Biblioteca {
     public void addEmpresimo(Emprestimo emprestimo) {
         emprestimos.add(emprestimo);
     }
-
 }

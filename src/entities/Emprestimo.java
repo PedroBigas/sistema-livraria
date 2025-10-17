@@ -1,9 +1,11 @@
 package entities;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Emprestimo {
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private Integer id;
     private Livro livro;
     private String nomeCliente;
@@ -52,5 +54,11 @@ public class Emprestimo {
     @Override
     public int hashCode() {
         return Objects.hashCode(id);
+    }
+
+    @Override
+    public String toString() {
+        return getNomeCliente() + " Você pegou o livro: " + getLivro().getTitulo() +
+                " do dia " + FORMATTER.format(getDataEmprestimo()) + " e devolver no dia: " + FORMATTER.format(getDataDevolucao());
     }
 }

@@ -1,14 +1,19 @@
 package app;
 
 import entities.Biblioteca;
+import entities.Emprestimo;
 import entities.Livro;
 import services.LivroService;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Formatter;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         Biblioteca biblioteca = new Biblioteca();
         Scanner sc = new Scanner(System.in);
         String resposta = "";
@@ -19,6 +24,7 @@ public class Main {
             resposta = sc.next();
             if (resposta.equalsIgnoreCase("SIM")) {
                 System.out.println("Segue nossos livros disponiveis: ");
+                System.out.println();
                 break;
             }
             if (resposta.equalsIgnoreCase("NAO")) {
@@ -46,10 +52,27 @@ public class Main {
         }
 
         Livro livroEscolhido = ls.getLivroPeloId(idEscolhido, livrosDisponiveis);
-        System.out.println(livroEscolhido);
+        System.out.println();
+        System.out.println("Que legal! Você escolheu o livro: " + livroEscolhido);
+        System.out.println("Agora para seguirmos o empréstimo do livro será necessário");
+        System.out.print("Inicarmos o seu cadastro, informe seu nome: ");
+        sc.nextLine();
+        String nome = sc.nextLine();
+        System.out.print("Até que dia vc irá ficar com o livro? (dia/mes/ano) ");
+        LocalDate dataDevolucao = LocalDate.parse(sc.next(), FORMATTER);
+        List<Emprestimo> emprestimos = biblioteca.getEmprestimos();
 
+        if (emprestimos.isEmpty()) {
+            emprestimos.add(new Emprestimo(1, livroEscolhido, nome, LocalDate.now(), dataDevolucao));
+        }
+        else {
+            int idLast = emprestimos.getLast().getId();
+            emprestimos.add(new Emprestimo(idLast + 1, livroEscolhido, nome, LocalDate.now(), dataDevolucao));
+        }
 
-
+        System.out.println();
+        System.out.println("Emprestimo realizado, até a proximo!");
+        System.out.println(emprestimos.getLast());
     }
 
     private static boolean verificaId(Integer id, List<Integer> ids) {
